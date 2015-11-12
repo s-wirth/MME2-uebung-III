@@ -28,3 +28,7 @@ Aufgabe 2b, Pflicht:
 
 - accounts : tweets = 1:n, ein account hat n tweets
   - HTTP GET http://localhost:3000/accounts/:id > Verweis auf tweets mitliefern
+
+Aufgabe 3, Bonus:
+
+- extend the api with a patch method for one of the collections
