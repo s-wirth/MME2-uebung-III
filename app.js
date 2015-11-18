@@ -77,8 +77,10 @@ app.use(function(req, res, next) {
 function tweetJSON(tweet) {
     return Object.assign({}, tweet, {
         href: "http://localhost:3000/tweets/" + tweet.id,
-        account: tweet.account.id,
-        accounthref: "http://localhost:3000/accounts/" + tweet.account.id
+        account: {
+            id: tweet.account.id,
+            href: "http://localhost:3000/accounts/" + tweet.account.id
+        }
     });
 }
 
@@ -89,9 +91,12 @@ function tweetJSON(tweet) {
  */
 function accountJSON(account) {
     return Object.assign({}, account, {
-        tweetshref: "http://localhost:3000/accounts/" + account.id + "/tweets",
-        tweets: tweetCollectionJSON(account.tweets),
-        href: "http://localhost:3000/accounts/" + account.id
+        tweets: {
+            tweets: tweetCollectionJSON(account.tweets),
+            href: "http://localhost:3000/accounts/" + account.id + "/tweets"
+        },
+        href: "http://localhost:3000/accounts/" + account.id,
+        accounts: "http://localhost:3000/accounts/"
     });
 }
 
